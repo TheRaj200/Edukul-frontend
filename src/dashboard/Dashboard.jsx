@@ -13,7 +13,7 @@ const DashboardContent = () => {
     <div className="flex-1 p-10 ml-64">
       <Routes>
         {/* Default redirect when visiting /dashboard */}
-        <Route index element={<Navigate to="all-blogs" replace />} />
+        <Route index element={<Navigate to="registrations" replace />} />
 
         <Route path="all-blogs" element={
           <div>

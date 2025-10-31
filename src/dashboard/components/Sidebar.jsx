@@ -21,7 +21,7 @@ const icons = {
     
     const handleLogout = () => {
       logout();
-      // Use replace so back button doesn't return to a protected page
+     
       navigate('/login', { replace: true });
     };
 
@@ -36,7 +36,27 @@ const icons = {
 
         <nav className="flex-1 overflow-y-auto" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
           <ul className="py-4" style={{ scrollbarWidth: 'none' }}>
-                 
+
+
+
+        {/* Registrations Link */}
+            <li>
+              <div
+                className={`
+                  flex items-center gap-4 px-5 py-3 mx-2 my-1 rounded-md
+                  text-sm font-medium cursor-pointer transition-all duration-200 ease-in-out
+                  ${location.pathname.includes('/dashboard/registrations')
+                    ? 'bg-purple-600 text-white shadow-lg' 
+                    : 'hover:bg-gray-700 hover:text-white'
+                  }
+                `}
+                onClick={() => navigate('/dashboard/registrations')}
+              >
+                {icons.Registrations}
+                <span>Registrations</span>
+              </div>
+            </li>      
+
             {/* All Blogs Link */}
             <li>
               <div
@@ -52,24 +72,6 @@ const icons = {
               >
                 {icons.Blog}
                 <span>All Blogs</span>
-              </div>
-            </li>
-
-            {/* Registrations Link */}
-            <li>
-              <div
-                className={`
-                  flex items-center gap-4 px-5 py-3 mx-2 my-1 rounded-md
-                  text-sm font-medium cursor-pointer transition-all duration-200 ease-in-out
-                  ${location.pathname.includes('/dashboard/registrations')
-                    ? 'bg-purple-600 text-white shadow-lg' 
-                    : 'hover:bg-gray-700 hover:text-white'
-                  }
-                `}
-                onClick={() => navigate('/dashboard/registrations')}
-              >
-                {icons.Registrations}
-                <span>Registrations</span>
               </div>
             </li>
 
