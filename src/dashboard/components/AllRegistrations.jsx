@@ -103,13 +103,9 @@ const AllRegistrations = () => {
   );
 
   return (
-    <div className="max-w-8xl mx-auto py-8">
-      <div className="p-6">
+    <div className="max-w-8xl mx-auto py-2">
+      <div className="p-2">
         <div className="flex items-center justify-between mb-6">
-          <div>
-            <h1 className="text-2xl font-bold">Registrations</h1>
-            <p className="text-sm text-gray-600">View and manage registrations (10 per page)</p>
-          </div>
         </div>
 
         <div className="overflow-x-auto">

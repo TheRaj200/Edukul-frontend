@@ -2,6 +2,7 @@
 
 
 import { useState } from "react";
+import axios from "axios";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 
@@ -35,57 +36,31 @@ const Announcements = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-
-    const scriptURL = "https://script.google.com/macros/s/AKfycbxoou8bbF6pbhmVoyyiDxLNwLjtGcL2j64-WbqkijJ5eQPTFr0ZMvXuSYM6UXYvu4Frwg/exec";
-    
-    const form = document.createElement('form');
-    form.method = 'POST';
-    form.action = scriptURL;
-    form.target = 'hidden_iframe';
-    
-
-    const fields = {
-      studentName: formData.studentName,
-      phoneNumber: formData.phoneNumber,
-      class: formData.class,
-      sheet: 'Sheet2',
-      timestamp: new Date().toLocaleString()
-    };
-    
-    Object.keys(fields).forEach(key => {
-      const input = document.createElement('input');
-      input.type = 'hidden';
-      input.name = key;
-      input.value = fields[key];
-      form.appendChild(input);
-    });
-    
-    document.body.appendChild(form);
-    form.submit();
-    document.body.removeChild(form);
-    
-    
-    setTimeout(() => {
-      setFormData({
-        studentName: "",
-        phoneNumber: "",
-        class: "Class 11",
+    try {
+      const payload = {
+        studentName: formData.studentName,
+        phoneNumber: formData.phoneNumber,
+        class: formData.class,
+        source: 'announcements_form',
+      };
+      await axios.post(`${import.meta.env.VITE_BASE_URL}/api/getintouch`, payload, {
+        headers: { 'Content-Type': 'application/json' },
+        withCredentials: true,
       });
+      setFormData({ studentName: "", phoneNumber: "", class: "Class 11" });
+    } catch (err) {
+      console.error('GetInTouch submit error', err);
+    } finally {
       setIsSubmitting(false);
-    }, 1000);
+    }
   };
 
   return (
     <section id="contactUs" className="py-12 bg-orange-50">
-      {/* Hidden iframe to receive form submission without page reload */}
-      <iframe 
-        name="hidden_iframe" 
-        style={{ display: 'none' }}
-        title="hidden_iframe"
-      ></iframe>
+      {/* Removed hidden iframe; using API via axios now */}
       
       <div className="max-w-7xl mx-auto items-center  grid grid-cols-1 md:grid-cols-2 gap-28 px-6">
         {/* Left:  Slider */}

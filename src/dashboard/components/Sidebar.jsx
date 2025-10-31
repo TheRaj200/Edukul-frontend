@@ -10,6 +10,9 @@ const icons = {
     Registrations: (
       <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 7a4 4 0 014-4h10a4 4 0 014 4v10a4 4 0 01-4 4H7a4 4 0 01-4-4V7z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 11h8M8 15h8M8 7h8" /></svg>
     ),
+    GetInTouch: (
+      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5h18M8 3v4m8-4v4M3 9h18M5 9v10a2 2 0 002 2h10a2 2 0 002-2V9" /></svg>
+    ),
 
   };
   
@@ -39,6 +42,8 @@ const icons = {
 
 
 
+   
+
         {/* Registrations Link */}
             <li>
               <div
@@ -56,6 +61,24 @@ const icons = {
                 <span>Registrations</span>
               </div>
             </li>      
+
+                 {/* Get In Touch Link */}
+            <li>
+              <div
+                className={`
+                  flex items-center gap-4 px-5 py-3 mx-2 my-1 rounded-md
+                  text-sm font-medium cursor-pointer transition-all duration-200 ease-in-out
+                  ${location.pathname.includes('/dashboard/getintouch')
+                    ? 'bg-purple-600 text-white shadow-lg' 
+                    : 'hover:bg-gray-700 hover:text-white'
+                  }
+                `}
+                onClick={() => navigate('/dashboard/getintouch')}
+              >
+                {icons.GetInTouch}
+                <span>Get In Touch</span>
+              </div>
+            </li>
 
             {/* All Blogs Link */}
             <li>

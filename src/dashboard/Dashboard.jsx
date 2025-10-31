@@ -5,6 +5,7 @@ import AllBlogs from './components/AllBlogs';
 import CreateBlog from './components/CreateBlog';
 import EditBlog from './components/EditBlog';
 import AllRegistrations from './components/AllRegistrations';
+import AllGetInTouch from './components/AllGetInTouch';
 
 
 
@@ -23,9 +24,17 @@ const DashboardContent = () => {
             </div>
           </div>
         } />
+        <Route path="getintouch" element={
+          <div>
+            <h1 className="text-3xl font-bold mb-5">Get In Touch</h1>
+            <div className="bg-white p-6 rounded-lg shadow-lg">
+              <AllGetInTouch />
+            </div>
+          </div>
+        } />
         <Route path="registrations" element={
           <div>
-            <h1 className="text-3xl font-bold mb-5">Registrations</h1>
+            <h1 className="text-3xl font-bold mb-5">Edukul  Registrations Form</h1>
             <div className="bg-white p-6 rounded-lg shadow-lg">
               <AllRegistrations />
             </div>
